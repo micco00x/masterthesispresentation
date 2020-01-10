@@ -3,6 +3,7 @@
 \usepackage[export]{adjustbox} % left and right in images
 \usepackage{subcaption} % subfigure
 \usepackage[none]{hyphenat} % Avoids to go out of margin
+\include{mathsym}
 \usetheme{metropolis}           % Use metropolis theme
 \title{Planning and Executing Humanoid Gaits\\in a World of Stairs}
 %\subtitle{Michele Cipriano}
@@ -35,15 +36,99 @@
 \justifying
 
 \begin{frame}{Introduction}
-  Abstract. Humanoid Robot Locomotion Problem. Approach + Block Scheme.
+  Abstract. Humanoid Robot Locomotion Problem.
 \end{frame}
 
-\begin{frame}{Variable Height CoM IS-MPC}
-  3D Motion Plan. Variable Height CoM Motion Model. MPC Formulation
-  (ZMP constraints, stability constraints, algorithm+BHuman).
+\begin{frame}{Block Scheme}
+	\begin{itemize}
+	  \item \texttt{elevation\_mapping}: autonomously build a map $\mathcal{M}_z$
+		\item RRT-based footstep planner: generate a footstep sequence $\{\bff^j\}$
+		    together with swing foot trajectories $\{\bfp_{\rm swg}^*\}$
+		\item variable-height CoM IS-MPC: realize a stable trajectory
+		    $\bfp_{\rm CoM}^*$
+	\end{itemize}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/BlockScheme.pdf}
+    \caption{Block scheme of the approach.}
+    \label{fig:block-scheme}
+  \end{figure}
+\end{frame}
 
-  Experiments: Normal Staircase. Simple Staircase. Multiple Staircases
-  (Up/Down).
+\begin{frame}{Variable Height CoM IS-MPC: 3D Motion Model}
+  \begin{columns}[c,onlytextwidth]
+	  \column{0.7\textwidth}
+      \begin{itemize}
+        \item LIP model not suitable for gait generation over uneven terrain
+				\item constraint vertical motion such that
+			    \begin{equation*}
+            \frac{\ddot{z}_c + g}{z_c - z_z} = \omega^2
+          \end{equation*}
+				\item CoM dynamics become
+				  \begin{align*}
+					  \ddot{x}_c &= \omega^2 (x_c - x_z)\\
+					  \ddot{y}_c &= \omega^2 (y_c - y_z)\\
+					  \ddot{z}_c &= \omega^2 (z_c - z_z) - g
+				  \end{align*}
+			\end{itemize}
+		\column{0.3\textwidth}
+		  \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{figures/LIPM_robot.pdf}
+        \caption{ZMP, CoP and COM are colinear.}
+        \label{fig:lipm-robot}
+    \end{figure}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Variable Height CoM IS-MPC: MPC Formulation}
+  \begin{columns}[c,onlytextwidth]
+	  \column{0.65\textwidth}
+			\begin{itemize}
+			  \item constrain ZMP into subregion of polyhedral cone (box)
+					\begin{equation*}
+%						-\frac{1}{2}
+%						\begin{pmatrix}
+%							\tilde{d}_x^\text{z} \\
+%							\tilde{d}_y^\text{z} \\
+%							d_z^\text{z}
+%						\end{pmatrix}
+%						\le
+						R_{k+i}^T
+						\begin{pmatrix}
+							x_z^{k+i} - x_f^{k+i} \\
+							y_z^{k+i} - y_f^{k+i} \\
+							z_z^{k+i} - y_f^{k+i}
+						\end{pmatrix}
+						\le
+						\frac{1}{2}
+						\begin{pmatrix}
+							\tilde{d}_x^\text{z} \\
+							\tilde{d}_y^\text{z} \\
+							d_z^\text{z}
+						\end{pmatrix}
+					\end{equation*}
+				\item bound CoM wrt ZMP (LIP stability)
+					\begin{equation*}
+						\frac{1}{\omega}\frac{1-e^{-\delta\omega}}{1-e^{-N\delta\omega}}
+							\sum_{i=0}^{N-1} e^{-i\delta\omega} \dot{x}_z^{k+i} =
+							x_c^k + \frac{\dot{x}_c^k}{\omega} - x_z^k
+					\end{equation*}
+			  \item solve QP problem using MPC scheme
+			\end{itemize}
+		\column{0.35\textwidth}
+		  \begin{figure}
+				\centering
+				\includegraphics[width=\textwidth]{figures/balance3d.pdf}
+				\caption{CoP internal to support polygon equivalent to ZMP internal
+				    to polyhedral cone.}
+				\label{fig:balance3d}
+      \end{figure}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Variable Height CoM IS-MPC: Experiments}	
+  Experiments: Normal/Simple Staircase. Multiple Staircases (Up/Down).
 \end{frame}
 
 \begin{frame}{RRT-based Footstep Planning}
