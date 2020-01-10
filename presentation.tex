@@ -1,0 +1,75 @@
+\documentclass[10pt]{beamer}
+\usepackage{ragged2e} % \justifying
+\usepackage[export]{adjustbox} % left and right in images
+\usepackage{subcaption} % subfigure
+\usepackage[none]{hyphenat} % Avoids to go out of margin
+\usetheme{metropolis}           % Use metropolis theme
+\title{Planning and Executing Humanoid Gaits\\in a World of Stairs}
+\subtitle{Michele Cipriano}
+%\date{\today}
+\date{January 21, 2020}
+%\author{Michele Cipriano}
+\author{
+  \textbf{Thesis Advisor:} Prof. Giuseppe Oriolo
+}
+\institute{Master Degree in Artificial Intelligence and Robotics\\
+  Department of Computer, Control and Management
+  Engineering\\Sapienza University of Rome}
+
+% Fontsize of figure smaller than normalsize:
+\setbeamerfont{caption}{size=\scriptsize}
+
+\begin{document}
+\nocite{*}
+
+\maketitle
+
+\justifying
+
+\begin{frame}{Introduction}
+  Abstract. Humanoid Robot Locomotion Problem. Approach + Block Scheme.
+\end{frame}
+
+\begin{frame}{Variable Height CoM IS-MPC}
+  3D Motion Plan. Variable Height CoM Motion Model. MPC Formulation
+  (ZMP constraints, stability constraints, algorithm+BHuman).
+
+  Experiments: Normal Staircase. Simple Staircase. Multiple Staircases
+  (Up/Down).
+\end{frame}
+
+\begin{frame}{RRT-based Footstep Planning}
+  Problem Formulation: R1, R2, R3. How the planner works (briefly). NAO's
+  catalogue of primitives.
+
+  Experiment: Obstacle Avoidance.
+\end{frame}
+
+\begin{frame}{Elevation Map Generation}
+  \texttt{elevation\_mapping}, features, how it works (briefly).
+  Settings: NAO + Xtion + \textit{World of Stairs}.
+
+  Experiments: Generated Map + Stair Climbing in Unknown Environment.
+\end{frame}
+
+\begin{frame}[standout]
+  Video
+\end{frame}
+
+\begin{frame}{Conclusion}
+  Results. Future Works.
+\end{frame}
+
+\begin{frame}[standout]
+    Q\&A
+\end{frame}
+
+\appendix
+
+\begin{frame}{References}
+  \bibliography{bibliography}
+  \bibliographystyle{ieeetr}
+\end{frame}
+
+\end{document}
+
