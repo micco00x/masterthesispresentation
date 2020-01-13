@@ -277,9 +277,68 @@
 
 \begin{frame}{Elevation Map Generation}
   \texttt{elevation\_mapping}, features, how it works (briefly).
-  Settings: NAO + Xtion + \textit{World of Stairs}.
+\end{frame}
 
-  Experiments: Generated Map + Stair Climbing in Unknown Environment.
+\begin{frame}{Elevation Map Generation}
+	\begin{columns}[c,onlytextwidth]
+		\column{0.65\textwidth}  	
+			Settings: NAO + Xtion + \textit{World of Stairs}.
+		\column{0.35\textwidth}
+		  \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{figures/NAO-with-xtion.JPEG}
+        \caption{NAO with ASUS Xtion Pro placed on its head.}
+    	\end{figure}		
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Stair Climbing in Unknown Environment}
+	\begin{figure}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/unknown-env/video/01.png}
+			%\caption{Starting position}
+		\end{subfigure}\hspace{0.05cm}%*{\fill}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/unknown-env/video/02.png}
+			%\caption{First step}
+		\end{subfigure}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/unknown-env/video/03.png}
+			%\caption{Second step}
+		\end{subfigure}\hspace{0.05cm}%*{\fill}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/unknown-env/video/04.png}
+			%\caption{Third step}
+		\end{subfigure}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/unknown-env/video/05.png}
+			%\caption{Fourth step}
+		\end{subfigure}\hspace{0.05cm}%*{\fill}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/unknown-env/video/06.png}
+			%\caption{Fifth step}
+		\end{subfigure}
+		\caption{NAO climbing the stairs in an unknown environment.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Stair Climbing in Unknown Environment: Footstep Plan}
+	\begin{center}
+    tree size: 454 -- solution size: 10 -- runtime: 331 ms
+  \end{center}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\textwidth]
+				{figures/experiments/unknown-env/footstep-plan.pdf}
+		\caption{Footstep plan generated for the scenario ``Stair Climbing in
+				Unknown Environment''.}
+	\end{figure}
 \end{frame}
 
 \begin{frame}[standout]
