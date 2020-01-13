@@ -127,8 +127,59 @@
 	\end{columns}
 \end{frame}
 
+\begin{frame}{Variable Height CoM IS-MPC: Experiments}
+	\begin{figure}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/multiple-staircases/downstairs/video/01.png}
+			%\caption{Starting position}
+		\end{subfigure}\hspace*{0.05cm}%{\fill}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/multiple-staircases/downstairs/video/02.png}
+			%\caption{First step}
+		\end{subfigure}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/multiple-staircases/downstairs/video/03.png}
+			%\caption{Second step}
+		\end{subfigure}\hspace*{0.05cm}%{\fill}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/multiple-staircases/downstairs/video/04.png}
+			%\caption{Third step}
+		\end{subfigure}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/multiple-staircases/downstairs/video/05.png}
+			%\caption{Fourth step}
+		\end{subfigure}\hspace*{0.05cm}%{\fill}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/multiple-staircases/downstairs/video/06.png}
+			%\caption{Fifth step}
+		\end{subfigure}
+		\caption{NAO going down the stairs.}
+		%\caption{The figures show the motion of the robot for the scenario
+		%		``Multiple Staircases (Downstairs)''. The robot starts on top of the 
+		%		stairway (Fig. \ref{fig:exp:ms:down:frame1}), then it places 
+		%		each step one in front of the other without colliding with the staircases,
+		%		safely reaching ground level. Each staircase has a height of 2 cm.}
+	\end{figure}
+\end{frame}
+
 \begin{frame}{Variable Height CoM IS-MPC: Experiments}	
-  Experiments: Normal/Simple Staircase. Multiple Staircases (Up/Down).
+	\begin{figure}
+		\centering
+		%\includegraphics[width=0.5\textwidth]
+		%		{figures/experiments/multiple-staircases/downstairs/xy-plot-2cm.pdf}
+		\includegraphics[width=0.8\textwidth]
+				{figures/experiments/multiple-staircases/downstairs/xz-plot-2cm.pdf}
+		\caption{CoM/ZMP plot ($z$-axis).}
+		%\caption{The plots show how the CoM and the ZMP vary with respect to the
+		%	footsteps in the scenario ``Multiple Staircases (Downstairs)''.
+		%	The green boxes represent the footsteps.}
+	\end{figure}
 \end{frame}
 
 \begin{frame}{RRT-based Footstep Planning}
