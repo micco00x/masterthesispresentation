@@ -3,7 +3,10 @@
 \usepackage[export]{adjustbox} % left and right in images
 \usepackage{subcaption} % subfigure
 \usepackage[none]{hyphenat} % Avoids to go out of margin
+
+% Math symbols:
 \include{mathsym}
+
 \usetheme{metropolis}           % Use metropolis theme
 \title{Planning and Executing Humanoid Gaits\\in a World of Stairs}
 %\subtitle{Michele Cipriano}
@@ -183,10 +186,79 @@
 \end{frame}
 
 \begin{frame}{RRT-based Footstep Planning}
-  Problem Formulation: R1, R2, R3. How the planner works (briefly). NAO's
-  catalogue of primitives.
+  \begin{itemize}
+    \item \textbf{Rapidly-Exploring Random Tree}
+			\begin{itemize}
+        \item[R1] maximum footsteps height variation
+				    $|z_{\rm f}^j - z_{\rm f}^{j-1}| \le \Delta z_{\max}$
+        \item[R2] footstep is fully in contact with the ground
+        \item[R3] swing foot trajectory $\bfp_{\rm {swg}}^j$ is collision free
+			\end{itemize}
+    \item footstep planner iteration
+			\begin{enumerate}
+        \item $\bfp_{\rm rand} \leftarrow {\text Rand}(\mathcal{M}_z)$
+				\item $v_{\rm near} \leftarrow Nearest(\bfp_{\rm rand}, \gamma,
+            \mathcal{T})$
+        \item $\bff_{\rm cand} \leftarrow {\text Rand}(U)$
+				\item \textbf{if} $\bff_{\rm cand}$ feasible wrt R1-R2 \textbf{then}
+				\item $\quad$ $\bfp_{\rm swg}^{\rm cand}
+						\leftarrow \text{BuildTrajectory}(\cdot)$
+				\item $\quad$ $\mathcal{T}\text{.add}(v_{\rm new}, v_{\rm near})$
+						\textbf{if} $\bfp_{\rm swg}^{\rm cand}$ satisfies R3
+      \end{enumerate}
+	\end{itemize}
+\end{frame}
 
-  Experiment: Obstacle Avoidance.
+\begin{frame}{RRT-based Footstep Planning: Catalogue of Primitives}
+	\begin{figure}
+			\centering
+			\includegraphics[width=0.8\textwidth]{figures/catalogue-primitives.pdf}
+			\caption{NAO's catalogue of primitives $U$.}
+% The catalogue of primitives (blue color) specifies the possible
+% poses of the
+% candidate footstep $\bff^{\rm cand}$ with respect to the pose of the 
+% current support foot $\bff_{\rm sup}^{\rm near}$. The figure shows the 
+% case where the left foot is the support foot. The catalogue for the 
+% case where the right foot is the support foot is specular. The $z$
+% coordinate of a candidate footstep can be retrieved directly from 
+% the elevation map $\mathcal{M}_z$.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{RRT-based Footstep Planning: Experiments}
+	\begin{figure}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/obstacle-avoidance/video/01.png}
+			%\caption{Starting position}
+		\end{subfigure}\hspace{0.05cm}%*{\fill}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/obstacle-avoidance/video/02.png}
+			%\caption{Moving to the left}
+		\end{subfigure}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/obstacle-avoidance/video/03.png}
+			%\caption{Avoiding the obstacle}
+		\end{subfigure}\hspace{0.05cm}%*{\fill}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/obstacle-avoidance/video/04.png}
+			%\caption{Moving forward}
+		\end{subfigure}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/obstacle-avoidance/video/05.png}
+			%\caption{Moving towards the goal}
+		\end{subfigure}\hspace{0.05cm}%*{\fill}
+		\begin{subfigure}{0.40\textwidth}
+			\includegraphics[width=\linewidth]
+				{figures/experiments/obstacle-avoidance/video/06.png}
+			%\caption{Goal region reached}
+		\end{subfigure}
+		\caption{NAO avoiding an obstacle.}
+	\end{figure}
 \end{frame}
 
 \begin{frame}{Elevation Map Generation}
