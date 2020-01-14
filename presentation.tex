@@ -198,14 +198,14 @@
 \begin{frame}{RRT-based Footstep Planning}
   \begin{itemize}
     \item \textbf{Rapidly-Exploring Random Tree}
-			\begin{itemize}
+      \begin{itemize}[<alert@+>]
         \item[R1] maximum footsteps height variation
 				    $|z_{\rm f}^j - z_{\rm f}^{j-1}| \le \Delta z_{\max}$
         \item[R2] footstep is fully in contact with the ground
         \item[R3] swing foot trajectory $\bfp_{\rm {swg}}^j$ is collision free
 			\end{itemize}
     \item footstep planner iteration
-			\begin{enumerate}
+      \begin{enumerate}[<alert@+>]
         \item $\bfp_{\rm rand} \leftarrow {\text Rand}(\mathcal{M}_z)$
 				\item $v_{\rm near} \leftarrow Nearest(\bfp_{\rm rand}, \gamma,
             \mathcal{T})$
