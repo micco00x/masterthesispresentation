@@ -275,14 +275,30 @@
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Elevation Map Generation}
-  \texttt{elevation\_mapping}, features, how it works (briefly).
+\begin{frame}{Elevation Map Generation: Framework}
+	\texttt{elevation\_mapping}
+  \begin{itemize}
+		\item robot-centric grid-based map: $\mathcal{M}_z$
+		\item height estimate $\mathcal{N}(\hat{h}_i, \sigma_{h_i}^2)$
+				for each cell $i$
+		\item \textbf{Kalman filter} given new height and motion measurements
+		\item \textbf{map fusion}: $(\hat{h}_i, h_{i,\min}, h_{i,\max})$ such that
+				$h_i \in [h_{i,\min}, h_{i,\max}]$ with 95\% confidence
+		\item \textbf{dynamic environments} using visibility check based
+				on ray tracing
+	\end{itemize}
 \end{frame}
 
-\begin{frame}{Elevation Map Generation}
+\begin{frame}{Elevation Map Generation: Settings}
 	\begin{columns}[c,onlytextwidth]
-		\column{0.65\textwidth}  	
-			Settings: NAO + Xtion + \textit{World of Stairs}.
+		\column{0.65\textwidth}
+			\begin{itemize}
+				\item NAO humanoid robot
+				\item ASUS Xtion Pro (\textbf{depth} sensor)
+				\item working range: 0.5--3.5 m
+				\item elevation map extended with \textbf{safe zone}
+				\item \textbf{unknown} \textit{World of Stairs} environment
+			\end{itemize}	
 		\column{0.35\textwidth}
 		  \begin{figure}
         \centering
