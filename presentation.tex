@@ -28,9 +28,6 @@
   Engineering\\Sapienza University of Rome
 }
 
-% Fontsize of figure smaller than normalsize:
-\setbeamerfont{caption}{size=\scriptsize}
-
 \begin{document}
 \nocite{*}
 
@@ -39,31 +36,46 @@
 \justifying
 
 \begin{frame}{Introduction}
-	\begin{itemize}
-		\item humanoid robot locomotion in an unknown \textit{World of Stairs}
-		\item \textbf{goal:} make NAO autonomously climb stairs
-		\item \textbf{mapping:} perceive the surrounding world
-		\item \textbf{planning:} generate a sequence of motion primitives
-		\item \textbf{control:} correctly execute the motion
-	\end{itemize}
+  \begin{itemize}
+    \item \textbf{goal:} humanoid robot locomotion in a \textit{World of
+        Stairs}
+    \item \textbf{assumption:} humanoid is equipped with a \textbf{depth}
+        sensor
+    \item \textbf{assumption:} humanoid knows its location
+  \end{itemize}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/elevmap_pic.jpg}
+  \end{figure}
 \end{frame}
 
-\begin{frame}{Block Scheme}
-	\begin{itemize}
-		\item NAO humanoid robot equipped with a \textbf{depth} sensor
-	  \item \texttt{elevation\_mapping}: autonomously build a map $\mathcal{M}_z$
-		\item \textbf{RRT-based footstep planner}:
-				generate a footstep sequence $\{\bff^j\}$
-		    together with swing foot trajectories $\{\bfp_{\rm swg}^*\}$
-		\item \textbf{variable-height CoM IS-MPC}: realize a stable trajectory
-		    $\bfp_{\rm CoM}^*$
-	\end{itemize}
+\begin{frame}{Proposed Approach}
   \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{figures/BlockScheme.pdf}
-    %\caption{Block scheme of the approach.}
-    \label{fig:block-scheme}
   \end{figure}
+  \begin{itemize}
+	  \item \textbf{elevation map building}: autonomously build a map $\mathcal{M}_z$
+		\item \textbf{footstep planner}:
+        generates a footstep sequence $\{\bff^j\}$ on $\mathcal{M}_z$
+		    together with swing foot trajectories $\{\bfp_{\rm swg}^*\}$
+		\item \textbf{variable-height IS-MPC}: computes a stable gait along the 
+      planned footsteps $\{\bff^j\}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Elevation Map Building: Framework}
+  \texttt{elevation\_mapping} \cite{Fankhauser2018ProbabilisticTerrainMapping}
+  \begin{itemize}
+		\item robot-centric grid-based map: $\mathcal{M}_z$
+		\item height estimate $\mathcal{N}(\hat{h}_i, \sigma_{h_i}^2)$
+				for each cell $i$
+		\item \textbf{Kalman filter} given new height and motion measurements
+		\item \textbf{map fusion}: $(\hat{h}_i, h_{i,\min}, h_{i,\max})$ such that
+				$h_i \in [h_{i,\min}, h_{i,\max}]$ with 95\% confidence
+		\item \textbf{dynamic environments} using visibility check based
+				on ray tracing
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Variable Height CoM IS-MPC: 3D Motion Model}
@@ -406,7 +418,7 @@
 
 \begin{frame}{References}
   \bibliography{bibliography}
-  \bibliographystyle{ieeetr}
+  \bibliographystyle{apalike}
 \end{frame}
 
 \end{document}
