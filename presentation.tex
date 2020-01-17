@@ -90,6 +90,31 @@
   \end{figure}
 \end{frame}
 
+\begin{frame}{Footstep Planner}
+  \begin{itemize}
+    \item requirements
+      \begin{itemize}[<alert@+>]
+        \item[R1] maximum footsteps height variation
+				    $|z_{\rm f}^j - z_{\rm f}^{j-1}| \le \Delta z_{\max}$
+        \item[R2] footstep is fully in contact with the ground
+        \item[R3] swing foot trajectory $\bfp_{\rm {swg}}^j$ is collision free
+			\end{itemize}
+    \item \textbf{RRT-based} planner iteration
+      \begin{enumerate}[<alert@+>]
+        \item $\bfp_{\rm rand} \leftarrow {\text Rand}(\mathcal{M}_z)$
+				\item $v_{\rm near} \leftarrow Nearest(\bfp_{\rm rand}, \gamma,
+            \mathcal{T})$
+        \item $\bff_{\rm cand} \leftarrow {\text Rand}(U)$
+				\item \textbf{if} $\bff_{\rm cand}$ feasible wrt R1-R2 \textbf{then}
+				\item $\quad$ $\bfp_{\rm swg}^{\rm cand}
+						\leftarrow \text{BuildTrajectory}(\cdot)$
+				\item $\quad$ $\mathcal{T}\text{.add}(v_{\rm new}, v_{\rm near})$
+						\textbf{if} $\bfp_{\rm swg}^{\rm cand}$ satisfies R3
+      \end{enumerate}
+    \item $U$ is the set of footstep primitives
+	\end{itemize}
+\end{frame}
+
 \begin{frame}{Variable Height CoM IS-MPC: 3D Motion Model}
   \begin{columns}[c,onlytextwidth]
 	  \column{0.7\textwidth}
