@@ -41,17 +41,16 @@
 \begin{frame}{Introduction}
 	\begin{itemize}
 		\item humanoid robot locomotion in an unknown \textit{World of Stairs}
+		\item \textbf{goal:} make NAO autonomously climb stairs
 		\item \textbf{mapping:} perceive the surrounding world
 		\item \textbf{planning:} generate a sequence of motion primitives
 		\item \textbf{control:} correctly execute the motion
-		\item NAO humanoid robot equipped with a \textbf{depth} sensor
-		\item \textbf{goal:} make NAO autonomously climb stairs in an unknown
-				\textit{World of Stairs} environment
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Block Scheme}
 	\begin{itemize}
+		\item NAO humanoid robot equipped with a \textbf{depth} sensor
 	  \item \texttt{elevation\_mapping}: autonomously build a map $\mathcal{M}_z$
 		\item \textbf{RRT-based footstep planner}:
 				generate a footstep sequence $\{\bff^j\}$
@@ -62,7 +61,7 @@
   \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{figures/BlockScheme.pdf}
-    \caption{Block scheme of the approach.}
+    %\caption{Block scheme of the approach.}
     \label{fig:block-scheme}
   \end{figure}
 \end{frame}
@@ -88,7 +87,7 @@
 		  \begin{figure}
         \centering
         \includegraphics[width=\textwidth]{figures/LIPM_robot.pdf}
-        \caption{ZMP, CoP and COM are colinear.}
+        %\caption{ZMP, CoP and COM are colinear.}
         \label{fig:lipm-robot}
     \end{figure}
 	\end{columns}
@@ -132,8 +131,8 @@
 		  \begin{figure}
 				\centering
 				\includegraphics[width=\textwidth]{figures/balance3d.pdf}
-				\caption{CoP internal to support polygon equivalent to ZMP internal
-				    to polyhedral cone.}
+				%\caption{CoP internal to support polygon equivalent to ZMP internal
+				%    to polyhedral cone.}
 				\label{fig:balance3d}
       \end{figure}
 	\end{columns}
@@ -192,7 +191,7 @@
 				{figures/experiments/multiple-staircases/downstairs/video/06.jpeg}
 			%\caption{Fifth step}
 		\end{subfigure}
-		\caption{NAO going down the stairs.}
+		%\caption{NAO going down the stairs.}
 		%\caption{The figures show the motion of the robot for the scenario
 		%		``Multiple Staircases (Downstairs)''. The robot starts on top of the 
 		%		stairway (Fig. \ref{fig:exp:ms:down:frame1}), then it places 
@@ -208,7 +207,7 @@
 		%		{figures/experiments/multiple-staircases/downstairs/xy-plot-2cm.pdf}
 		\includegraphics[width=0.8\textwidth]
 				{figures/experiments/multiple-staircases/downstairs/xz-plot-2cm.pdf}
-		\caption{CoM/ZMP plot ($z$-axis).}
+		%\caption{CoM/ZMP plot ($z$-axis).}
 		%\caption{The plots show how the CoM and the ZMP vary with respect to the
 		%	footsteps in the scenario ``Multiple Staircases (Downstairs)''.
 		%	The green boxes represent the footsteps.}
@@ -243,7 +242,7 @@
 	\begin{figure}
 			\centering
 			\includegraphics[width=0.8\textwidth]{figures/catalogue-primitives.pdf}
-			\caption{NAO's catalogue of primitives $U$.}
+			%\caption{NAO's catalogue of primitives $U$.}
 % The catalogue of primitives (blue color) specifies the possible
 % poses of the
 % candidate footstep $\bff^{\rm cand}$ with respect to the pose of the 
@@ -287,7 +286,7 @@
 				{figures/experiments/obstacle-avoidance/video/06.png}
 			%\caption{Goal region reached}
 		\end{subfigure}
-		\caption{NAO avoiding an obstacle.}
+		%\caption{NAO avoiding an obstacle.}
 	\end{figure}
 \end{frame}
 
@@ -299,7 +298,7 @@
 		\centering
 		\includegraphics[width=0.8\textwidth]
 				{figures/experiments/obstacle-avoidance/footstep-plan.pdf}
-		\caption{Footstep plan generated for the scenario ``Obstacle Avoidance''.}
+		%\caption{Footstep plan generated for the scenario ``Obstacle Avoidance''.}
 	\end{figure}
 \end{frame}
 
@@ -331,7 +330,7 @@
 		  \begin{figure}
         \centering
         \includegraphics[width=\textwidth]{figures/NAO-with-xtion.JPEG}
-        \caption{NAO with ASUS Xtion Pro placed on its head.}
+        %\caption{NAO with ASUS Xtion Pro placed on its head.}
     	\end{figure}		
 	\end{columns}
 \end{frame}
@@ -368,7 +367,7 @@
 				{figures/experiments/unknown-env/video/06.jpeg}
 			%\caption{Fifth step}
 		\end{subfigure}
-		\caption{NAO climbing the stairs in an unknown environment.}
+		%\caption{NAO climbing the stairs in an unknown environment.}
 	\end{figure}
 \end{frame}
 
@@ -380,8 +379,8 @@
 		\centering
 		\includegraphics[width=0.8\textwidth]
 				{figures/experiments/unknown-env/footstep-plan.pdf}
-		\caption{Footstep plan generated for the scenario ``Stair Climbing in
-				Unknown Environment''.}
+		%\caption{Footstep plan generated for the scenario ``Stair Climbing in
+		%		Unknown Environment''.}
 	\end{figure}
 \end{frame}
 
