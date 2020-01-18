@@ -173,6 +173,69 @@
 	\end{columns}
 \end{frame}
 
+\begin{frame}{Variable Height IS-MPC: MPC Formulation}
+  \begin{columns}[c,onlytextwidth]
+	  \column{0.65\textwidth}
+			\begin{itemize}
+			  \item \textbf{constrain ZMP} into subregion of polyhedral cone (box)
+					\begin{equation*}
+%						-\frac{1}{2}
+%						\begin{pmatrix}
+%							\tilde{d}_x^\text{z} \\
+%							\tilde{d}_y^\text{z} \\
+%							d_z^\text{z}
+%						\end{pmatrix}
+%						\le
+						R_{k+i}^T
+						\begin{pmatrix}
+							x_z^{k+i} - x_f^{k+i} \\
+							y_z^{k+i} - y_f^{k+i} \\
+							z_z^{k+i} - y_f^{k+i}
+						\end{pmatrix}
+						\le
+						\frac{1}{2}
+						\begin{pmatrix}
+							\tilde{d}_x^\text{z} \\
+							\tilde{d}_y^\text{z} \\
+							d_z^\text{z}
+						\end{pmatrix}
+					\end{equation*}
+				\item bound CoM wrt ZMP (\textbf{LIP stability})
+					\begin{equation*}
+						\frac{1}{\omega}\frac{1-e^{-\delta\omega}}{1-e^{-N\delta\omega}}
+							\sum_{i=0}^{N-1} e^{-i\delta\omega} \dot{x}_z^{k+i} =
+							x_c^k + \frac{\dot{x}_c^k}{\omega} - x_z^k
+					\end{equation*}
+			\end{itemize}
+		\column{0.35\textwidth}
+		  \begin{figure}
+				\centering
+				\includegraphics[width=\textwidth]{figures/balance3d.pdf}
+      \end{figure}
+	\end{columns}
+	\begin{itemize}
+		\item solve \textbf{QP problem} using \textbf{MPC} scheme
+			\begin{align*}
+				\min_{\dot{X}_\text{z}^k, \dot{Y}_\text{z}^k, \dot{Z}_\text{z}^k}
+						&\|\dot{X}_z^k\|_2^2 + \|\dot{Y}_z^k\|_2^2 + \|\dot{Z}_z^k\|_2^2 +
+						\beta ( \|\Delta X_f^{k+1}\|_2^2 + \|\Delta Y_f^{k+1}\|_2^2 +
+						\|\Delta Z_f^{k+1}\|_2^2 ) \\
+%						&\sum_{i=1}^N
+%						\biggl[
+%								(\dot{x}_z^{k+i})^2 +
+%								(\dot{y}_z^{k+i})^2 +
+%								(\dot{z}_z^{k+i})^2 + \\
+%								&\beta \biggl(
+%										(x_z^{k+i} - x_f^{k+i})^2 +
+%										(y_z^{k+i} - y_f^{k+i})^2 +
+%										(z_z^{k+i} - z_f^{k+i})^2
+%								\biggr)
+%						\biggr]\\
+						\text{s.t. } &\text{ZMP and stability constraints}
+			\end{align*}
+	\end{itemize}
+\end{frame}
+
 \begin{frame}{Variable Height CoM IS-MPC: 3D Motion Model}
   \begin{columns}[c,onlytextwidth]
 	  \column{0.7\textwidth}
