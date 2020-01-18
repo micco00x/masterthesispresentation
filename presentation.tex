@@ -144,6 +144,35 @@
 	\end{figure}
 \end{frame}
 
+\begin{frame}{Variable Height IS-MPC: 3D Motion Model}
+  \begin{columns}[c,onlytextwidth]
+	  \column{0.7\textwidth}
+      \begin{itemize}
+        \item \textbf{LIP} model not suitable for gait generation over
+						\textbf{uneven terrain} due to constant height assumption
+				\item linearity can be maintained by constraining vertical motion
+            such that
+			    \begin{equation*}
+            \frac{\ddot{z}_c + g}{z_c - z_z} = \omega^2
+          \end{equation*}
+				\item CoM dynamics become
+				  \begin{align*}
+					  \ddot{x}_c &= \omega^2 (x_c - x_z)\\
+					  \ddot{y}_c &= \omega^2 (y_c - y_z)\\
+					  \ddot{z}_c &= \omega^2 (z_c - z_z) - g
+				  \end{align*}
+        \item $x_c, y_c, z_c$: CoM coordinates
+        \item $x_z, y_z, z_z$: ZMP coordinates
+			\end{itemize}
+		\column{0.3\textwidth}
+		  \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{figures/LIPM_robot.pdf}
+        \label{fig:lipm-robot}
+    \end{figure}
+	\end{columns}
+\end{frame}
+
 \begin{frame}{Variable Height CoM IS-MPC: 3D Motion Model}
   \begin{columns}[c,onlytextwidth]
 	  \column{0.7\textwidth}
